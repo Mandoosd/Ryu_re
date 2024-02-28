@@ -19,6 +19,11 @@ $(function () {
     });
 
 
+    $('.m_btn').on('click', function () {
+        $('.hamburger').toggleClass('is-active');
+        $('.left_gnb').toggleClass('on');
+    });
+
     $(window).on('scroll', function () {
         const scrollHeight = $(window).scrollTop();
         console.log(scrollHeight);
@@ -31,19 +36,16 @@ $(function () {
     });
 
 
-    $('.png_slide .main_slide').slick({
-        pauseOnHover: false,
-        autoplaySpeed: 2000,
-        dots: true,
+    var swiper = new Swiper(".main_slide", {
+        effect: 'fade', fadeEffect: { crossFade: true },
 
-    });
-
-    $('.pizza_slide').slick({
-        slidesToShow: 4,
-        arrows: false,
-        dots: true,
-        slidesToScroll: 4,
-        infinite: false,
+        pagination: {
+            el: ".swiper-pagination",
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
 
     });
 });
