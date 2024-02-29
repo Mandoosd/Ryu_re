@@ -19,10 +19,39 @@ $(function () {
     });
 
 
-    $('.m_btn').on('click', function () {
+    $('.header>.m_btn').on('click', function () {
         $('.hamburger').toggleClass('is-active');
         $('.left_gnb').toggleClass('on');
     });
+
+
+
+
+    $('.left_gnb .m_btn').on('click', function () {
+        // 클릭된 버튼의 인덱스를 가져옵니다.
+        var index = $(this).index() + 1;
+
+        // 현재 클릭된 버튼이 이미 on 클래스를 가지고 있다면
+        if ($(this).hasClass('on')) {
+            // 해당 버튼의 on 클래스를 제거합니다.
+            $(this).removeClass('on');
+            // 해당하는 sub 요소에서도 on 클래스를 제거합니다.
+            $('.left_gnb .sub.sub0' + index).removeClass('on');
+        } else {
+            // 클릭된 버튼의 부모 요소인 m_btn_wrap으로부터 on 클래스를 모두 제거합니다.
+            $('.m_btn').removeClass('on');
+
+            // 현재 클릭된 버튼에만 on 클래스를 추가합니다.
+            $(this).addClass('on');
+
+            // 모든 sub 요소에서 on 클래스를 제거합니다.
+            $('.left_gnb .sub').removeClass('on');
+
+            // 현재 클릭된 버튼과 같은 순서의 sub 요소에만 on 클래스를 토글합니다.
+            $('.left_gnb .sub.sub0' + index).toggleClass('on');
+        }
+    });
+
 
     $(window).on('scroll', function () {
         const scrollHeight = $(window).scrollTop();

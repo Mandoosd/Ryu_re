@@ -65,7 +65,7 @@ button {
 @media (max-width: 768px) {
     .m_btn {
         display: block;
-        position: absolute;
+        line-height: 0;
 
         z-index: 1000;
     }
